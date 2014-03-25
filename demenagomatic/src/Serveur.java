@@ -2,8 +2,6 @@ package SacADos;
 
 import java.io.*;
 import java.net.*;
-import java.util.Scanner;
-
 
 public class Serveur {
 	private ServerSocket serverSocket;
@@ -76,14 +74,14 @@ public class Serveur {
 	public void dialogue(Socket socket)
 	{
 		try{
-			boolean fin=false;//Terminer la communication, tout s'est bien passé
+			boolean fin=false;//Terminer la communication, tout s'est bien passï¿½
 			boolean tour=false;
 			boolean partieEnCours=false; 
 			BufferedReader lecteurReseau = fluxEntrant(socket);
 			PrintWriter ecrivainReseau = fluxSortant(socket);
-			PrintWriter ecrivainFichier = new PrintWriter(new FileWriter(new File("donnees.moving"))); //Creation du fichier de reception des données
+			PrintWriter ecrivainFichier = new PrintWriter(new FileWriter(new File("donnees.moving"))); //Creation du fichier de reception des donnï¿½es
 
-			String message=""; //Dernier message envoyé/reçu 
+			String message=""; //Dernier message envoyï¿½/reï¿½u 
 			while (!fin){
 				if (tour){//Envoi du message au client
 					if(message.equals("KO")) fin=true;
@@ -99,18 +97,18 @@ public class Serveur {
 							this.coefValeurPecuniaire = Integer.parseInt(tab[0]);
 							this.coefValeurAffective = Integer.parseInt(tab[1]); 
 							partieEnCours=true; 
-							message="OK"; //On informe le client qu'on accepte sa demande, le message sera envoyé au prochain tour de boucle
+							message="OK"; //On informe le client qu'on accepte sa demande, le message sera envoyï¿½ au prochain tour de boucle
 						} 
 						else 
 						{
 							System.out.println("Vous ne respectez pas le protocole.");
-							System.out.println("Il est necessaire d'avoir deux coefficients (strictement inférieur à 10) après la demande de jeu.");
+							System.out.println("Il est necessaire d'avoir deux coefficients (strictement infï¿½rieur ï¿½ 10) aprï¿½s la demande de jeu.");
 							System.out.println("Exemple : wannaPlay ? 2 1");
-							message="KO"; //On informe le client qu'il ne respecte pas le protocole, le message sera envoyé au prochain tour de boucle
+							message="KO"; //On informe le client qu'il ne respecte pas le protocole, le message sera envoyï¿½ au prochain tour de boucle
 						}
 					}
 					else if (partieEnCours && message!="KO" && message!="OK")
-					{ //L'utilisateur envoi les données du fichier
+					{ //L'utilisateur envoi les donnï¿½es du fichier
 						ecrivainFichier.println(message);
 					}
 				}
@@ -150,19 +148,19 @@ public class Serveur {
 					this.coefValeurPecuniaire = Integer.parseInt(tab[0]);
 					this.coefValeurAffective = Integer.parseInt(tab[1]); 
 					partieEnCours=true; 
-					message="OK"; //On informe le client qu'on accepte sa demande, le message sera envoyé au prochain tour de boucle
+					message="OK"; //On informe le client qu'on accepte sa demande, le message sera envoyï¿½ au prochain tour de boucle
 					respectCommunication=true;
 				} 
 				else 
 				{
-					System.out.println("Une partie est déjà en cours.");
+					System.out.println("Une partie est dï¿½jï¿½ en cours.");
 					respectCommunication=false;
 				}
 			}
 			else
 			{
 				System.out.println("Vous ne respectez pas le protocole. Pour lancer une partie, vous devez envoyer \"wannaPlay ? \" suivi de deux entiers.");
-				System.out.println("Un espace doit être present entre les deux entiers.");
+				System.out.println("Un espace doit ï¿½tre present entre les deux entiers.");
 				System.out.println("Fin de la communication.");
 				respectCommunication=false;
 			}
@@ -175,7 +173,7 @@ public class Serveur {
 			ecrivainReseau.println(message);
 			ecrivainReseau.flush(); 
 
-			//Et on passe à la suite de la communication si le protocole a été respecté 
+			//Et on passe ï¿½ la suite de la communication si le protocole a ï¿½tï¿½ respectï¿½ 
 			if(respectCommunication){
 				dialogueReceptionFichier(socket);
 			}
@@ -191,7 +189,7 @@ public class Serveur {
 	/**
 	 * <p>
 	 * Cette methode dialogue avec le client afin de recevoir les donnees du fichier .moving sur lequel le serveur va travailler.
-	 * Après la reception d'une ligne de données, celle-ci est écrit directement dans le fichier data.moving.
+	 * Aprï¿½s la reception d'une ligne de donnï¿½es, celle-ci est ï¿½crit directement dans le fichier data.moving.
 	 * </p>
 	 * @param socket
 	 */
@@ -202,7 +200,7 @@ public class Serveur {
 			boolean tour=false, respectProtocole=true;
 			BufferedReader lecteurReseau = fluxEntrant(socket);
 			PrintWriter ecrivainReseau = fluxSortant(socket);
-			PrintWriter ecrivainFichier = new PrintWriter(new FileWriter(new File("donnees.moving"))); //Creation du fichier de reception des données
+			PrintWriter ecrivainFichier = new PrintWriter(new FileWriter(new File("donnees.moving"))); //Creation du fichier de reception des donnï¿½es
 
 			String message = "";
 			while (!message.equals("KO")){
@@ -236,7 +234,7 @@ public class Serveur {
 
 	public void dialogueResultat(Socket socket)
 	{
-		System.out.println("Point d'arrivé : Methode de communication des résultats, côté serveur. WIP");
+		System.out.println("Point d'arrivï¿½ : Methode de communication des rï¿½sultats, cï¿½tï¿½ serveur. WIP");
 	}
 
 

@@ -1,13 +1,11 @@
 package SacADos;
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Client {
 	private Socket socket;
-	private String nomFichier; //Le nom du fichier qui sera à envoyer au serveur
-	private char[][] donnees; //liste correspondant aux données venant du fichier (en-tête et nombres)
+	private String nomFichier; //Le nom du fichier qui sera ï¿½ envoyer au serveur
+	private char[][] donnees; //liste correspondant aux donnï¿½es venant du fichier (en-tï¿½te et nombres)
 	private int coefValAffective;
 	private int coefValPecuniaire;
 	private boolean jeuEnCours;
@@ -72,13 +70,13 @@ public class Client {
 			//Reception d'un message
 			message=lecteurReseau.readLine();
 			if(message.equals("OK") && !jeuEnCours) 
-			{//Le serveur a accepté le lancement de la partie
+			{//Le serveur a acceptï¿½ le lancement de la partie
 				jeuEnCours=true;	
 				dialogueEnvoiFichier();
 			}  
 			else if(message.equals("KO"))
 			{
-				System.out.println("Fin de la communication. Le protocole n'a pas été respecté ou une partie est déjà en cours.");
+				System.out.println("Fin de la communication. Le protocole n'a pas ï¿½tï¿½ respectï¿½ ou une partie est dï¿½jï¿½ en cours.");
 			}
 			socket.close();	 
 		}catch(IOException e){
@@ -100,7 +98,7 @@ public class Client {
 			while (!fin && !message.equals("KO")) {
 				if (tour)
 				{ 
-					//Il faut envoyer les données du fichier .moving au serveur 
+					//Il faut envoyer les donnï¿½es du fichier .moving au serveur 
 					if(i<donnees.length){  
 						message="";
 						for(int j=0;j<1024;j++)
@@ -124,7 +122,7 @@ public class Client {
 
 					if(message.equals("KO"))
 					{
-						System.out.println("Fin de la communication. Le protocole n'a pas été respecté.");
+						System.out.println("Fin de la communication. Le protocole n'a pas ï¿½tï¿½ respectï¿½.");
 					}
 				}
 				tour=!tour;
@@ -140,7 +138,7 @@ public class Client {
 	}
 	public void dialogueResultat()
 	{
-		System.out.println("Point d'arrivé : Methode de communication des resultats, côté client. WIP");
+		System.out.println("Point d'arrivï¿½ : Methode de communication des resultats, cï¿½tï¿½ client. WIP");
 	}
 	public void principal()
 	{

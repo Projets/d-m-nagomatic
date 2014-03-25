@@ -1,8 +1,5 @@
 package SacADos;
-import java.awt.List;
 import java.io.*;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
 
 /**
  * <p>
@@ -37,8 +34,8 @@ public class LectureFichier{
 
 	/**
 	 * <p>
-	 * Cette méthode permet de verifier le nom du fichier à partir duquel les données sont chargés.
-	 * Si l'extension du fichier n'est pas "moving", il ne peut pas etre utilisé.
+	 * Cette mï¿½thode permet de verifier le nom du fichier ï¿½ partir duquel les donnï¿½es sont chargï¿½s.
+	 * Si l'extension du fichier n'est pas "moving", il ne peut pas etre utilisï¿½.
 	 *  </p>
 	 * @param s nom du fichier
 	 * @return
@@ -63,8 +60,8 @@ public class LectureFichier{
 
 	/**
 	 * <p>
-	 * Cette méthode permet de lire un fichier afin de construire un ensemble d'items utilisable.
-	 * C'est ici qu'est geré l'ensemble des erreurs qui peuvent résider dans la syntaxe. 
+	 * Cette mï¿½thode permet de lire un fichier afin de construire un ensemble d'items utilisable.
+	 * C'est ici qu'est gerï¿½ l'ensemble des erreurs qui peuvent rï¿½sider dans la syntaxe. 
 	 * </p>
 	 * @param Probleme p, nomFichier
 	 * @throws IOException Pour eviter les erreurs lors de la lecture de fichier
@@ -83,7 +80,7 @@ public class LectureFichier{
 			n++;		 
 			if (ligne.startsWith( "Poids limite du container : ")) {
 				if(Integer.decode(ligne.split(" : ")[1].split(" ")[0])<0){
-					System.err.print("Il y a un probleme a  la ligne " + n + " : poids du container negatif \n" + ligne +"\n");
+					System.err.print("Il y a un probleme aï¿½ la ligne " + n + " : poids du container negatif \n" + ligne +"\n");
 					System.exit(1);
 				}
 				p.setPoidsLimite(Integer.decode(ligne.split(" : ")[1].split(" ")[0]));	
@@ -91,7 +88,7 @@ public class LectureFichier{
 			else if ( ligne.startsWith( "Nombre d'items : ")){
 				p.setNbItems(Integer.decode(ligne.split(" : ")[1].split(" ")[0]));
 				if(p.getNbItems() > (l-2)){ 
-					System.err.print("Il y a un probleme a  la ligne " + n + " : nombre d'item incorrect \n" + ligne +"\n");
+					System.err.print("Il y a un probleme aï¿½ la ligne " + n + " : nombre d'item incorrect \n" + ligne +"\n");
 					System.exit(1);
 				}
 			}
@@ -103,7 +100,7 @@ public class LectureFichier{
 					Integer.decode(ligne.split(" ")[3]);
 				}
 				catch(NumberFormatException e){
-					System.err.print("Il y a un probleme a  la ligne " + n + " : probleme avec un entier \n" + ligne +"\n");
+					System.err.print("Il y a un probleme aï¿½ la ligne " + n + " : probleme avec un entier \n" + ligne +"\n");
 					System.exit(1);
 				}
 				if((Integer.decode(ligne.split(" ")[0]).intValue())>0 && (Integer.decode(ligne.split(" ")[1]).intValue())>0 && (Integer.decode(ligne.split(" ")[2]).intValue())>=0 && (Integer.decode(ligne.split(" ")[3]).intValue())>0 ){
@@ -111,12 +108,12 @@ public class LectureFichier{
 					p.ajouteItem(i);
 				}
 				else{
-					System.err.print("Il y a un probleme a  la ligne " + n + " : nombre negatif \n" + ligne +"\n");
+					System.err.print("Il y a un probleme aï¿½ la ligne " + n + " : nombre negatif \n" + ligne +"\n");
 					System.exit(1);
 				}	
 			}
 			else{
-				System.err.print("Il y a un probleme a  la ligne " + n + " : trop ou pas assez de colonnes \n" + ligne +"\n");
+				System.err.print("Il y a un probleme aï¿½ la ligne " + n + " : trop ou pas assez de colonnes \n" + ligne +"\n");
 				System.exit(1);
 			}
 		} 
@@ -127,7 +124,7 @@ public class LectureFichier{
 	/**
 	 * <p>
 	 * Cette methode permet de lire un fichier et de construire un tableau de bytes.
-	 * Chaque ligne de ce tableau sera d'au maximum 1024 bytes, ceci facilitera l'envoi des données puisque cette methode est utilisée pour la classe Client.java
+	 * Chaque ligne de ce tableau sera d'au maximum 1024 bytes, ceci facilitera l'envoi des donnï¿½es puisque cette methode est utilisï¿½e pour la classe Client.java
 	 * </p>
 	 * @param s
 	 * @return byte[][]
@@ -174,8 +171,8 @@ public class LectureFichier{
 	
 	/**
 	 * <p>
-	 * Cette methode permet d'agrandir une matrice par deux tout en gardant la même longueur des lignes. 
-	 * Exemple : En entrée : Une matrice 50*1024 
+	 * Cette methode permet d'agrandir une matrice par deux tout en gardant la mï¿½me longueur des lignes. 
+	 * Exemple : En entrï¿½e : Une matrice 50*1024 
 	 * 			 En sortie : Une matrice 100*1024.
 	 * </p>
 	 * @param tab
